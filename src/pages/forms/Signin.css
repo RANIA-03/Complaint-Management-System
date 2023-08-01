@@ -1,0 +1,50 @@
+.signin-card form {
+  border: 1.5px solid rgb(128, 128, 128, 0.5);
+  box-shadow: 3px 3px rgb(128, 128, 128, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  margin: 60px;
+}
+
+.signin-card h6 {
+  font-size: medium;
+}
+.signin-card h6,
+.signin-card input,
+.signin-card button,
+.signin-card p,
+.error {
+  margin-bottom: 20px;
+}
+.signin-card input {
+  max-width: 85%;
+  min-width: 85%;
+  padding: 8px 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.signin-card button {
+  width: 85%;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.signin-card button:hover {
+  background-color: #0056b3;
+}
+
+.signin-card p {
+  font-size: 13px;
+}
+.error {
+  color: red;
+  width: 80%;
+}

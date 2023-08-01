@@ -1,0 +1,28 @@
+.main-nav {
+  padding: 10px;
+  width: 100%;
+  border: 1.5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+.main-nav p {
+  color: gray;
+}
+.leftSide {
+  display: flex;
+  align-items: center;
+}
+.rightSide {
+  padding-right: 35px;
+  display: flex;
+}
+.sign-out,
+.create,
+.view {
+  text-decoration: none;
+}

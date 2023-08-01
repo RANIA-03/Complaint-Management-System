@@ -1,0 +1,48 @@
+.admin {
+  margin-top: 80px;
+}
+.admin p {
+  color: rgb(128, 128, 128, 0.8);
+}
+.user .container {
+  background-color: grey;
+  height: 550px;
+  width: 800px;
+  background: linear-gradient(
+    to bottom,
+    rgb(247, 243, 243, 0.3) 5%,
+    rgb(165, 165, 165, 0.7) 80%
+  );
+  padding: 30px;
+}
+.admin p,
+.admin .container {
+  margin-bottom: 40px;
+}
+
+.container hr {
+  width: 800px;
+}
+
+table {
+  border-spacing: 0 15px;
+}
+th {
+  color: rgb(128, 128, 128, 0.8);
+}
+th,
+td {
+  width: 150px;
+  text-align: center;
+  padding: 8px;
+}
+.blueC {
+  color: rgb(4, 171, 243);
+}
+
+.trData:hover {
+  background-color: white;
+}
+.complaint-data {
+  display: flex;
+}
