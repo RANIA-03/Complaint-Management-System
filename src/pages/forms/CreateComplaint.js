@@ -17,12 +17,14 @@ export default function CreateComplaint() {
       data.email = currentUser.email;
       data.id = Math.floor(Math.random() * 1000000);
       data.status = "Pending";
+      data.opendBy = "";
       localStorage.setItem("complaints", JSON.stringify([data]));
       navigate("/user");
     } else {
       let complaints = JSON.parse(localStorage.getItem("complaints"));
       data.email = currentUser.email;
       data.status = "Pending";
+      data.opendBy = "";
       data.id = Math.floor(Math.random() * 1000000);
       complaints.push(data);
       localStorage.setItem("complaints", JSON.stringify(complaints));

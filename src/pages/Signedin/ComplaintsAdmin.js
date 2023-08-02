@@ -16,12 +16,14 @@ export default function ComplaintsAdmin() {
   const { register, handleSubmit } = useForm();
   let complaints = JSON.parse(localStorage.getItem("complaints"));
   const onSubmit = (data, id) => {
-    console.log(id, data);
+    // console.log(id, data);
     // eslint-disable-next-line array-callback-return
     complaints.map((complaint) => {
       if (complaint.id === id) {
         complaint.status = data.status;
+        complaint.opendBy = currentUser.email;
         localStorage.setItem("complaints", JSON.stringify(complaints));
+        setClickedComplaint(complaint);
       }
     });
   };
@@ -37,74 +39,84 @@ export default function ComplaintsAdmin() {
     <>
       <SignedinLayout />
       <div className="user">
-        <div></div>
         <div className="container">
           {!clicked ? (
             <>
               <h3>All Complaints</h3>
-              <br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>SUBJECT</th>
-                    <th>COMPLAINT TYPE</th>
-                    <th>COMPLAINT ID</th>
-                    <th>SEVERITY</th>
-                    <th>STATUS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan={"5"}>
-                      <hr />
-                    </td>
-                  </tr>
-                  {complaints &&
-                    // eslint-disable-next-line array-callback-return
-                    complaints.map((complaint, index) => {
-                      return (
-                        <tr
-                          className="trData"
-                          key={complaint.id}
-                          onClick={() => handleRowClick(complaint)}
-                        >
-                          <td className="blueC">{complaint.subject}</td>
-                          <td>{complaint.complaintType}</td>
-                          <td className="blueC">{complaint.id}</td>
-                          <td>{complaint.severity}</td>
-                          <td className="status">{complaint.status}</td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
+              <br />{" "}
+              <div className="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SUBJECT</th>
+                      <th>COMPLAINT TYPE</th>
+                      <th>COMPLAINT ID</th>
+                      <th>SEVERITY</th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colSpan={"5"}>
+                        <hr />
+                      </td>
+                    </tr>
+                    {complaints &&
+                      // eslint-disable-next-line array-callback-return
+                      complaints.map((complaint, index) => {
+                        return (
+                          <tr
+                            className="trData"
+                            key={complaint.id}
+                            onClick={() => handleRowClick(complaint)}
+                          >
+                            <td className="blueC">{complaint.subject}</td>
+                            <td>{complaint.complaintType}</td>
+                            <td className="blueC">{complaint.id}</td>
+                            <td>{complaint.severity}</td>
+                            <td className="status">{complaint.status}</td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
             </>
           ) : (
             <div className="viewData">
               {clickedComplaint && (
-                <div className="complaint-data">
+                <>
                   <h3>Complaint Details</h3>
-                  <h5>SUBJECT</h5>
-                  <h5>STATUS</h5>
-                  <h6>{clickedComplaint.subject}</h6>
-                  <h6>{clickedComplaint.status}</h6>
-                  <h5>COMPLAINT ID</h5>
-                  <h5>SEVERITY</h5>
-                  <h6>{clickedComplaint.id}</h6>
-                  <h6>{clickedComplaint.severity}</h6>
-                  <h5>COMPLAINT TYPE</h5>
-                  <h5>OPEND BY</h5>
-                  <h6>{clickedComplaint.complaintType}</h6>
-                  <h6>{currentUser.email}</h6>
-                  <h5>DETAILS</h5>
+                  <br />
+                  <div className="complaint-data">
+                    <h3>SUBJECT</h3>
+                    <h3>STATUS</h3>
+                    <h4>{clickedComplaint.subject}</h4>
+                    <h4>{clickedComplaint.status}</h4>
+                    <h3>COMPLAINT ID</h3>
+                    <h3>SEVERITY</h3>
+                    <h4>{clickedComplaint.id}</h4>
+                    <h4>{clickedComplaint.severity}</h4>
+                    <h3>COMPLAINT TYPE</h3>
+                    <h3>OPEND BY</h3>
+                    <h4>{clickedComplaint.complaintType}</h4>
+                    <h4>{currentUser.email}</h4>
+                    <h3>
+                      DETAILS
+                      <h4 className="rr">
+                        <br />
+                        {clickedComplaint.subject}
+                        <br />
+                        <br />
+                      </h4>
+                    </h3>
 
-                  <h6>{clickedComplaint.subject}</h6>
-
-                  {/* <h4></h4>
+                    {/* <h3></h3>
                   <p>Complaint Type: {clickedComplaint.complaintType}</p>
                   <p>Complaint ID: {clickedComplaint.id}</p>
                   <p>Severity: {clickedComplaint.severity}</p> */}
-                </div>
+                  </div>
+                </>
               )}
               <form
                 onSubmit={handleSubmit(
@@ -117,8 +129,14 @@ export default function ComplaintsAdmin() {
                   <option value={"Rejected"}>Rejected</option>
                   <option value={"Pending"}>Pending</option>
                 </select>
-                <button onClick={closeModalHundler}>Close</button>
-                <button type="submit">Update</button>
+                <button type="submit" className="btnU">
+                  Update
+                </button>
+                <div className="btnDiv">
+                  <button className="btnC" onClick={closeModalHundler}>
+                    Close
+                  </button>
+                </div>
               </form>
             </div>
           )}

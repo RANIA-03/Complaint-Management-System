@@ -81,3 +81,6 @@ button {
   display: flex;
   justify-content: center;
 }
+table {
+  margin-left: -20px;
+}

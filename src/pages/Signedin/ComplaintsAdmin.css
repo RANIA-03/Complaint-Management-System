@@ -6,7 +6,6 @@
 }
 .user .container {
   background-color: grey;
-  height: 550px;
   width: 800px;
   background: linear-gradient(
     to bottom,
@@ -14,6 +13,7 @@
     rgb(165, 165, 165, 0.7) 80%
   );
   padding: 30px;
+  padding-right: 0;
 }
 .admin p,
 .admin .container {
@@ -27,7 +27,8 @@
 table {
   border-spacing: 0 15px;
 }
-th {
+th,
+.complaint-data h3 {
   color: rgb(128, 128, 128, 0.8);
 }
 th,
@@ -44,5 +45,46 @@ td {
   background-color: white;
 }
 .complaint-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.complaint-data h4 {
+  font-size: larger;
+}
+
+.rr {
+  color: black;
+}
+.btnU {
+  width: 200px;
+  margin-left: 20px;
+  height: 35px;
+  background-color: rgb(0, 128, 0);
+  border-radius: 10px;
+}
+.btnU:hover {
+  background-color: rgb(0, 128, 0, 0.7);
+}
+.btnC {
+  background-color: rgb(255, 0, 0);
+  width: 200px;
+  margin-left: 20px;
+  height: 35px;
+  border-radius: 10px;
+}
+.btnC:hover {
+  background-color: rgb(255, 0, 0, 0.7);
+}
+.btnDiv {
+  margin-top: 50px;
   display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  margin-top: -10px;
+
+  height: 550px;
+  overflow: auto;
 }

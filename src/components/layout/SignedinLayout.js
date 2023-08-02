@@ -18,7 +18,10 @@ export default function SignedinLayout() {
           <p>&nbsp;&nbsp;Complaints Management Portal</p>
         </div>
         <div className="rightSide">
-          <Link to="/user" className="view">
+          <Link
+            to={currentUser.role === "user" ? "/user" : "/admin"}
+            className="view"
+          >
             View All Complaints&nbsp;&nbsp;&nbsp;
           </Link>
           {currentUser.role === "user" && (

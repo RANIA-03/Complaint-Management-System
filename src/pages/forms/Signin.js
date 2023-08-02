@@ -55,6 +55,12 @@ export default function Signin() {
         });
       }
     }
+    if (
+      !JSON.parse(localStorage.getItem("admins")) &&
+      !JSON.parse(localStorage.getItem("users"))
+    ) {
+      alert("User not found !!");
+    }
     reset();
   };
   return (
